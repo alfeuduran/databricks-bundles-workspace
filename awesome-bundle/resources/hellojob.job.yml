@@ -1,0 +1,10 @@
+resources:
+  jobs:
+    hellojob:
+      name: hellojob
+      queue:
+        enabled: true
+      tasks:
+        - task_key: notebook_task
+          notebook_task:
+            notebook_path: ../hellonotebook.ipynb

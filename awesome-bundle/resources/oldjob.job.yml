@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    oldjob:
+      name: oldjob
+      tasks:
+        - task_key: oldtask
+          notebook_task:
+            notebook_path: ../HelloNotebookOldJob.ipynb
+            source: WORKSPACE
+      queue:
+        enabled: true
+      performance_target: STANDARD
