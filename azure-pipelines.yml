@@ -65,15 +65,15 @@ stages:
         DATABRICKS_HOST: $(DATABRICKS_HOST)
         DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
       displayName: 'Configurar CLI do Databricks'
-    - script: databricks bundle validate -t $(env)
+    - script: databricks bundle validate -t qa
       workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
-      displayName: Validate bundle for $(env) enviroment
+      displayName: Validate bundle for qa enviroment
 
     - script: |
         echo Deploy do bundle via CLI do Databricks...
-        databricks bundle deploy -t $(env)
+        databricks bundle deploy -t qa
       workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
-      displayName: Deploy job on $(env) enviroment
+      displayName: Deploy job on qa enviroment
 
       
 - stage: toProduction
@@ -133,13 +133,13 @@ stages:
       displayName: 'Configurar CLI do Databricks'
 
     - script: |
-        databricks bundle validate -t $(env)
+        databricks bundle validate -t prd
       workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
-      displayName: Validate bundle for $(env) enviroment
+      displayName: Validate bundle for prd enviroment
       
 
     - script: |
         echo Deploy do bundle via CLI do Databricks...
-        databricks bundle deploy -t $(env) 
+        databricks bundle deploy -t prd 
       workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
-      displayName: Deploy job on $(env) enviroment
+      displayName: Deploy job on prd enviroment
