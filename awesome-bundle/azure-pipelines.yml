@@ -65,13 +65,14 @@ stages:
         DATABRICKS_HOST: $(DATABRICKS_HOST)
         DATABRICKS_TOKEN: $(DATABRICKS_TOKEN)
       displayName: 'Configurar CLI do Databricks'
-    - script: |
-        databricks bundle validate -t $(env)
+    - script: databricks bundle validate -t $(env)
+      workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
       displayName: Validate bundle for $(env) enviroment
 
     - script: |
         echo Deploy do bundle via CLI do Databricks...
         databricks bundle deploy -t $(env)
+      workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
       displayName: Deploy job on $(env) enviroment
 
       
