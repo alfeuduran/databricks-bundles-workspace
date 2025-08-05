@@ -133,13 +133,13 @@ stages:
       displayName: 'Configurar CLI do Databricks'
 
     - script: |
-        databricks bundle validate -t qa
+        databricks bundle validate -t prod
       workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
       displayName: Validate bundle for prd enviroment
       
 
     - script: |
         echo Deploy do bundle via CLI do Databricks...
-        databricks bundle deploy -t qa
+        databricks bundle deploy -t prod
       workingDirectory: $(System.DefaultWorkingDirectory)/awesome-bundle
       displayName: Deploy job on prd enviroment
